@@ -1,11 +1,12 @@
-package main
+package main_test
 
 import (
     "testing"
+    "github.com/lvreynoso/testintr"
 )
 
 func TestCalculate(t *testing.T) {
-    if Calculate(2) != 4 {
+    if testintr.Calculate(2) != 4 {
         t.Error("Expected 2 + 2 to equal 4")
     }
 }
@@ -23,7 +24,7 @@ func TestTableCalculate(t *testing.T) {
     }
 
     for _, test := range tests {
-        if output := Calculate(test.input); output != test.expected {
+        if output := testintr.Calculate(test.input); output != test.expected {
             t.Error("Test Failed: {} inputted, {} expected, recieved: {}", test.input, test.expected, output)
         }
     }
@@ -37,7 +38,7 @@ func TestTableCalculate(t *testing.T) {
 
 func benchmarkCalculate(input int, b *testing.B) {
     for n := 0; n < b.N; n++ {
-        Calculate(input)
+        testintr.Calculate(input)
     }
 }
 
